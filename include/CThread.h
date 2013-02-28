@@ -9,7 +9,7 @@
 
 #include "../build_required.h"
 
-namespace Threading {
+namespace Threads {
 
 class CThread {
  public:

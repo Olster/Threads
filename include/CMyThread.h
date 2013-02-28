@@ -2,17 +2,21 @@
 #define CMYTHREAD_H
 
 #include "CThread.h"
+#include "CMutex.h"
 
-class CMyThread : public Threading::CThread {
+class CMyThread : public Threads::CThread {
  public:
-  CMyThread() {};
+  CMyThread(CMutex* mutex) { m_mutex = mutex; }
 
   void ThreadMain();
+
+ private:
+  CMutex* m_mutex;
 };
 
-class COtherThread : public Threading::CThread {
+class COtherThread : public Threads::CThread {
  public:
-  COtherThread() {};
+  COtherThread() {}
   void ThreadMain();
 };
 

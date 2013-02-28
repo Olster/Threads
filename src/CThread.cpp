@@ -1,6 +1,6 @@
 #include "CThread.h"
 
-namespace Threading {
+namespace Threads {
 
 void* CThread::Internal(void* data) {
   CThread* thread = (CThread*)(data);
@@ -9,7 +9,7 @@ void* CThread::Internal(void* data) {
 }
 
 bool CThread::Create() {
-  return !pthread_create(&m_thread, 0, Internal, this);
+  return pthread_create(&m_thread, 0, Internal, this) == 0;
 }
 
 bool CThread::Join() {

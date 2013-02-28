@@ -1,20 +1,27 @@
 # depslib dependency file v1.0
-1361997219 source:/home/olster/cpp_progr/threads/main.cpp
+1362080047 source:/home/olster/cpp_progr/threads/main.cpp
 	<iostream>
 	"CMyThread.h"
 
-1362074780 source:/home/olster/cpp_progr/threads/src/CThread.cpp
+1362078999 source:/home/olster/cpp_progr/threads/src/CThread.cpp
 	"CThread.h"
 
-1362076283 /home/olster/cpp_progr/threads/include//CThread.h
+1362078613 /home/olster/cpp_progr/threads/include//CThread.h
 	<pthread.h>
 	<unistd.h>
 	"../build_required.h"
 
-1361997235 /home/olster/cpp_progr/threads/include//CMyThread.h
+1362080041 /home/olster/cpp_progr/threads/include//CMyThread.h
 	"CThread.h"
+	"CMutex.h"
 
-1361997181 source:/home/olster/cpp_progr/threads/src/CMyThread.cpp
+1362079984 source:/home/olster/cpp_progr/threads/src/CMyThread.cpp
 	"CMyThread.h"
 	<iostream>
+
+1362080040 /home/olster/cpp_progr/threads/include//CMutex.h
+	<pthread.h>
+
+1362080041 source:/home/olster/cpp_progr/threads/src/CMutex.cpp
+	"CMutex.h"
 

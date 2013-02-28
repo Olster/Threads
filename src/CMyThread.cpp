@@ -4,7 +4,9 @@
 
 void CMyThread::ThreadMain() {
   for (int i = 0; i < 100; i++) {
+    m_mutex->Lock();
     std::cout << "Hello " << i << std::endl;
+    m_mutex->Unlock();
     Sleep(100);
   }
 }

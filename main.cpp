@@ -6,13 +6,14 @@ using namespace std;
 
 int main() {
 
-  CMyThread thread;
-  COtherThread otherThread;
+  CMutex mutex;
 
-  otherThread.Create();
+  CMyThread thread(&mutex);
+  CMyThread thread2(&mutex);
   thread.Create();
+  thread2.Create();
 
   thread.Join();
-  otherThread.Join();
+  thread2.Join();
   return 0;
 }
