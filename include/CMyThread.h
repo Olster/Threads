@@ -10,4 +10,10 @@ class CMyThread : public Threading::CThread {
   void ThreadMain();
 };
 
+class COtherThread : public Threading::CThread {
+ public:
+  COtherThread() {};
+  void ThreadMain();
+};
+
 #endif // CMYTHREAD_H
