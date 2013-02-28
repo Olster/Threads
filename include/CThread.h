@@ -28,7 +28,9 @@ class CThread {
 
   // NOTE: Tricky usage of |static|
   // If not static, this function is not allowed to be called
-  // In pthread_create()
+  // In pthread_create(). Probably because |this| is passed into a
+  // non-static class member function, but not into static one
+
   static void* Internal(void* thread);
 
   pthread_t m_thread;

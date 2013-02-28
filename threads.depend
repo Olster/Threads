@@ -6,7 +6,7 @@
 1362074780 source:/home/olster/cpp_progr/threads/src/CThread.cpp
 	"CThread.h"
 
-1362074848 /home/olster/cpp_progr/threads/include//CThread.h
+1362076283 /home/olster/cpp_progr/threads/include//CThread.h
 	<pthread.h>
 	<unistd.h>
 	"../build_required.h"
