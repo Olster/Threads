@@ -2,19 +2,14 @@
 
 namespace Threading {
 
-void* internal(void* data) {
+void* CThread::Internal(void* data) {
   CThread* thread = (CThread*)(data);
   thread->ThreadMain();
   pthread_exit(0);
 }
 
-bool CreateThread(CThread* thread) {
-  return (pthread_create(&thread->m_thread, 0, internal, thread) == 0);
-}
-
 bool CThread::Create() {
-
-  return CreateThread(this);
+  return !pthread_create(&m_thread, 0, Internal, this);
 }
 
 bool CThread::Join() {

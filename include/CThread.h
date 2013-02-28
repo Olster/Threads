@@ -25,7 +25,11 @@ class CThread {
  protected:
   void Sleep(long milisec);
  private:
-  friend bool CreateThread(CThread* thread);
+
+  // NOTE: Tricky usage of |static|
+  // If not static, this function is not allowed to be called
+  // In pthread_create()
+  static void* Internal(void* thread);
 
   pthread_t m_thread;
 
