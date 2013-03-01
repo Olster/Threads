@@ -6,6 +6,7 @@ CMutex::CMutex() {
 }
 
 CMutex::~CMutex() {
+  // Not sure if I should really unlock it before destroying
   if (m_bIsLocked) {
     Unlock();
   }
@@ -14,7 +15,8 @@ CMutex::~CMutex() {
 }
 
 bool CMutex::Lock() {
-  return pthread_mutex_lock(&m_mutex) == 0;
+  m_bIsLocked = pthread_mutex_lock(&m_mutex) == 0;
+  return m_bIsLocked;
 }
 
 bool CMutex::TryLock() {
@@ -22,6 +24,7 @@ bool CMutex::TryLock() {
 }
 
 bool CMutex::Unlock() {
-  return pthread_mutex_unlock(&m_mutex) == 0;
+  m_bIsLocked = pthread_mutex_unlock(&m_mutex) == 0;
+  return m_bIsLocked;
 }
 

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1362080047 source:/home/olster/cpp_progr/threads/main.cpp
+1362167262 source:/home/olster/cpp_progr/threads/main.cpp
 	<iostream>
 	"CMyThread.h"
 
@@ -11,17 +11,28 @@
 	<unistd.h>
 	"../build_required.h"
 
-1362080041 /home/olster/cpp_progr/threads/include//CMyThread.h
+1362167532 /home/olster/cpp_progr/threads/include//CMyThread.h
+	<queue>
+	<string>
 	"CThread.h"
 	"CMutex.h"
+	"CSemaphore.h"
 
-1362079984 source:/home/olster/cpp_progr/threads/src/CMyThread.cpp
+1362167674 source:/home/olster/cpp_progr/threads/src/CMyThread.cpp
 	"CMyThread.h"
 	<iostream>
 
-1362080040 /home/olster/cpp_progr/threads/include//CMutex.h
+1362165988 /home/olster/cpp_progr/threads/include//CMutex.h
 	<pthread.h>
+	"../build_required.h"
 
-1362080041 source:/home/olster/cpp_progr/threads/src/CMutex.cpp
+1362166262 source:/home/olster/cpp_progr/threads/src/CMutex.cpp
 	"CMutex.h"
+
+1362167366 /home/olster/cpp_progr/threads/include//CSemaphore.h
+	<semaphore.h>
+	"../build_required.h"
+
+1362166676 source:/home/olster/cpp_progr/threads/src/CSemaphore.cpp
+	"CSemaphore.h"
 

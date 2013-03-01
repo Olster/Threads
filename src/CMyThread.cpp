@@ -2,18 +2,41 @@
 
 #include <iostream>
 
-void CMyThread::ThreadMain() {
-  for (int i = 0; i < 100; i++) {
+CReader::CReader(std::queue<std::string>* queue, CMutex* mutex, CSemaphore* sem) {
+  m_mutex = mutex;
+  m_sem = sem;
+
+  m_data = queue;
+}
+
+CWriter::CWriter(std::queue<std::string>* queue, CMutex* mutex, CSemaphore* sem) {
+  m_mutex = mutex;
+  m_sem = sem;
+
+  m_data = queue;
+}
+
+void CReader::ThreadMain() {
+  while (true) {
     m_mutex->Lock();
-    std::cout << "Hello " << i << std::endl;
+
+    m_data->push("A really interesting message");
+
     m_mutex->Unlock();
-    Sleep(100);
+    m_sem->Post();
   }
 }
 
-void COtherThread::ThreadMain() {
-  for (int i = 0; i < 200; i++) {
-    std::cout << "Hello from another thread" << i << std::endl;
-    Sleep(200);
+void CWriter::ThreadMain() {
+  while (true) {
+    m_sem->Wait();
+    m_mutex->Lock();
+
+    while (!m_data->empty()) {
+      std::cout << m_data->front() << std::endl;
+      m_data->pop();
+    }
+
+    m_mutex->Unlock();
   }
 }
