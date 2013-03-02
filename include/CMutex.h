@@ -24,4 +24,13 @@ class CMutex {
   DISALLOW_COPY_AND_ASSIGN(CMutex);
 };
 
+class CAutoMutex {
+ public:
+  CAutoMutex() { m_mutex.Lock(); }
+  ~CAutoMutex() { m_mutex.Unlock(); }
+ private:
+  CMutex m_mutex;
+  DISALLOW_COPY_AND_ASSIGN(CAutoMutex);
+};
+
 #endif // CMUTEX_H

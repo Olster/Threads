@@ -22,7 +22,7 @@
 	"CMyThread.h"
 	<iostream>
 
-1362165988 /home/olster/cpp_progr/threads/include//CMutex.h
+1362238138 /home/olster/cpp_progr/threads/include//CMutex.h
 	<pthread.h>
 	"../build_required.h"
 
