@@ -5,17 +5,14 @@
 using namespace std;
 
 int main() {
-  CMutex mutex;
-  CSemaphore sem;
-  std::queue<std::string> data;
+  CMyThread thread1;
+  CMyThread thread2;
 
-  CReader thread(&data, &mutex, &sem);
-  CWriter thread2(&data, &mutex, &sem);
+  thread1.CreateThread();
+  thread2.CreateThread();
 
-  thread.Create();
-  thread2.Create();
+  Threads::CThread::JoinThread(thread1);
+  Threads::CThread::JoinThread(thread2);
 
-  thread.Join();
-  thread2.Join();
   return 0;
 }
