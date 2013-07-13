@@ -1,29 +1,27 @@
-#include "CSemaphore.h"
+#include "threading/semaphore.h"
 
-namespace Threads {
-
-CSemaphore::CSemaphore(int initial, int max) {
+namespace threading {
+Semaphore::Semaphore(int initial, int max) {
   sem_init(&m_semaphore, 0, initial);
   m_nMaxAquired = max;
 }
 
-CSemaphore::~CSemaphore() {
+Semaphore::~Semaphore() {
   sem_destroy(&m_semaphore);
 }
 
-void CSemaphore::Post() {
+void Semaphore::Post() {
   sem_post(&m_semaphore);
   m_nCurrent--;
 }
 
-void CSemaphore::Wait() {
+void Semaphore::Wait() {
   sem_wait(&m_semaphore);
   m_nCurrent++;
 }
 
-int CSemaphore::GetValue() {
+int Semaphore::GetValue() {
   sem_getvalue(&m_semaphore, &m_nCurrent);
   return m_nCurrent;
 }
-
-} // namespace Threads
+} // namespace threading

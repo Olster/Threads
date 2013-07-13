@@ -1,22 +1,17 @@
-#include "CThread.h"
+#include "threading/thread.h"
 
-namespace Threads {
-
-void* CThread::Internal(void* data) {
-  CThread* thread = (CThread*)(data);
-  thread->ThreadMain();
-  pthread_exit(0);
-}
-
-bool CThread::CreateThread() {
+namespace threading {
+bool Thread::CreateThread() {
   return pthread_create(&m_thread, 0, Internal, this) == 0;
 }
 
-bool CThread::JoinThread(CThread& thread) {
+// static
+bool Thread::JoinThread(Thread& thread) {
   return (pthread_join(thread.m_thread, 0) == 0);
 }
 
-void CThread::Sleep(long milisec) {
+// static
+void Thread::Sleep(long milisec) {
   if (milisec < 0) {
     return;
   }
@@ -34,9 +29,16 @@ void CThread::Sleep(long milisec) {
   }
 }
 
-unsigned long int CThread::GetTID() {
+// static
+unsigned long int Thread::GetThreadID() {
   return pthread_self();
 }
 
-} // namespace Threads
+void* Thread::Internal(void* data) {
+  Thread* thread = (Thread*)(data);
+  thread->ThreadMain();
+  pthread_exit(0);
+}
+
+} // namespace threading
 

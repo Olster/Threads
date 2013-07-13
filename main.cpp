@@ -1,18 +1,28 @@
 #include <iostream>
-
-#include "CMyThread.h"
+#include "threading/thread.h"
 
 using namespace std;
 
+class FooThread : public threading::Thread {
+ private:
+  void ThreadMain() override;
+};
+
+void FooThread::ThreadMain() {
+  for (int i = 0; i < 5; i++) {
+    cout << "Running thread " << threading::Thread::GetThreadID() << endl;
+  }
+}
+
 int main() {
-  CMyThread thread1;
-  CMyThread thread2;
+  FooThread thread1;
+  FooThread thread2;
 
   thread1.CreateThread();
   thread2.CreateThread();
 
-  Threads::CThread::JoinThread(thread1);
-  Threads::CThread::JoinThread(thread2);
+  threading::Thread::JoinThread(thread1);
+  threading::Thread::JoinThread(thread2);
 
   return 0;
 }

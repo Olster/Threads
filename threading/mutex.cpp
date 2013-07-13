@@ -1,13 +1,12 @@
-#include "CMutex.h"
+#include "threading/mutex.h"
 
-namespace Threads {
+namespace threading {
 
-CMutex::CMutex() {
-  m_bIsLocked = false;
+Mutex::Mutex() {
   pthread_mutex_init(&m_mutex, 0);
 }
 
-CMutex::~CMutex() {
+Mutex::~Mutex() {
   // NOTE: Not sure if I should really unlock it before destroying
   if (m_bIsLocked) {
     Unlock();
@@ -16,18 +15,18 @@ CMutex::~CMutex() {
   pthread_mutex_destroy(&m_mutex);
 }
 
-bool CMutex::Lock() {
+bool Mutex::Lock() {
   m_bIsLocked = pthread_mutex_lock(&m_mutex) == 0;
   return m_bIsLocked;
 }
 
-bool CMutex::TryLock() {
+bool Mutex::TryLock() {
   return pthread_mutex_trylock(&m_mutex) == 0;
 }
 
-bool CMutex::Unlock() {
+bool Mutex::Unlock() {
   m_bIsLocked = pthread_mutex_unlock(&m_mutex) == 0;
   return m_bIsLocked;
 }
 
-} // namespace Threads
+} // namespace threading
