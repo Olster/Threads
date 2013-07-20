@@ -1,7 +1,14 @@
 #ifndef THREADING_SEMAPHORE_H_
 #define THREADING_SEMAPHORE_H_
 
+#if defined(UNIX)
 #include <semaphore.h>
+using sem_type = sem_t;
+#elif defined(WIN32)
+#include <Windows.h>
+using sem_type = HANDLE;
+#endif
+
 #include "build_required.h"
 
 namespace threading {
@@ -17,7 +24,7 @@ class Semaphore {
 
   int GetValue();
  private:
-  sem_t m_semaphore;
+  sem_type m_semaphore;
 
   // Maximum threads waiting at semaphore
   int m_nMaxAquired;

@@ -1,7 +1,14 @@
 #ifndef THREADING_MUTEX_H_
 #define THREADING_MUTEX_H_
 
+#if defined(UNIX)
 #include <pthread.h>
+using mutex_type = pthread_mutex_t;
+#elif defined(WIN32)
+#include <Windows.h>
+using mutex_type = HANDLE;
+#endif
+
 #include "build_required.h"
 
 namespace threading {
@@ -18,7 +25,7 @@ class Mutex {
   bool Unlock();
 
  private:
-  pthread_mutex_t m_mutex;
+  mutex_type m_mutex;
 
   bool m_bIsLocked = false;
 };

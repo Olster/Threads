@@ -1,6 +1,9 @@
 #include "threading/thread.h"
 
 namespace threading {
+Thread::~Thread() {
+}
+
 bool Thread::CreateThread() {
   return pthread_create(&m_thread, 0, Internal, this) == 0;
 }
@@ -11,7 +14,7 @@ bool Thread::JoinThread(Thread& thread) {
 }
 
 // static
-void Thread::Sleep(long milisec) {
+void Thread::Sleep(long millisec) {
   if (milisec < 0) {
     return;
   }
