@@ -15,7 +15,7 @@ bool Thread::JoinThread(Thread& thread) {
 
 // static
 void Thread::Sleep(long millisec) {
-  if (milisec < 0) {
+  if (millisec < 0) {
     return;
   }
 
@@ -23,7 +23,7 @@ void Thread::Sleep(long millisec) {
   time.tv_sec = 0;
 
   // Nanoseconds to miliseconds
-  time.tv_nsec = milisec * 1000000L;
+  time.tv_nsec = millisec * 1000000L;
 
   timespec remain = time;
 
