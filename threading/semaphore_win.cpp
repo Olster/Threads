@@ -16,7 +16,7 @@ void Semaphore::Post() {
 }
 
 void Semaphore::Wait() {
-  ::WaitForSingleObject(m_semaphore,INFINITE);
+  ::WaitForSingleObject(m_semaphore, INFINITE);
   m_nCurrent++;
 }
 
