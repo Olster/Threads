@@ -18,7 +18,7 @@ Mutex::~Mutex() {
 bool Mutex::Lock() {
   DWORD err = WaitForSingleObject(m_mutex, INFINITE);
   m_bIsLocked = err != WAIT_OBJECT_0;
-  return m_bIsLocked;
+  return !m_bIsLocked;
 }
 
 bool Mutex::TryLock() {
