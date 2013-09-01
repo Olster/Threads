@@ -26,7 +26,7 @@ bool Mutex::TryLock() {
 }
 
 bool Mutex::Unlock() {
-  m_bIsLocked = ::ReleaseMutex(m_mutex) == TRUE;
+  m_bIsLocked = ::ReleaseMutex(m_mutex) == FALSE;
   return m_bIsLocked;
 }
 
